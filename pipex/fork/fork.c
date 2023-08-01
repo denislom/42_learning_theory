@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 00:14:27 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/02 00:58:52 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/02 01:05:45 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ fork():
 			The child process and the parent process run in separate memory spaces.
 			At  the  time  of fork()  both  memory spaces have the same content.
 		RETURN: -1 on errors, 0 in child process,
-			in parent returns the if of child process
+			in parent returns the id of child process
 */
 int	main(int argc, char *argv[])
 {
 	int	id;
 
 	id = fork();
+	if (id != 0)
+		id = fork();
 	if (id == 0)
 	{
 		printf("Hello world from id %d, this is child process\n", id);
