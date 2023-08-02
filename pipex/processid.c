@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 23:49:13 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/03 00:11:09 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/03 00:14:47 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@ ISBN 978-1-59327-220-3.
 [2]
 https://www.youtube.com/watch?v=tcYo6hipaSA&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=4
 
-	#include <sys/wait.h>
+       #include <sys/types.h>
+       #include <unistd.h>
+
+       pid_t getpid(void);
+       pid_t getppid(void);
+	getpid(): RETURNS the process ID of the calling process
+	getppid(): RETURNS THE process ID of the parent of the calling procsess.
 */
 
 int	main(int argc, char *argv[])
