@@ -6,13 +6,14 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 00:37:19 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/06 17:49:15 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/06 18:02:11 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <errno.h>
 
 /*
 SOURCES:
@@ -48,5 +49,21 @@ int	main(int argc, char *arv[])
 
 	id1 = fork();
 	id2 = fork();
+	if (id1 == 0)
+	{
+		if (id2 == 0)
+			printf("We are process Y\n");
+		else
+			printf("We are process X\n");
+	}
+	else
+	{
+		if (id2 == 0)
+			printf("We are process Z\n");
+		else
+			printf("We are the parent process!\n");
+	}
+	while (wait(NULL) != -1 || errno != ECHILD)
+		printf("Waited for the child to finish.\n");	
 	return (0);
 }
