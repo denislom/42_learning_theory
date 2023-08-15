@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 21:24:18 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/15 22:32:46 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/15 23:23:58 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,37 @@ https://www.youtube.com/watch?v=Mqb2dVRe0uo&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3k
 		- if succesful, two file descriptors are stored in PIPEDES,
 		byters written on PIPEDES[1] can be read from PIPEDES[0].
 		RETURNS: 0 if succesful, -1 if not
+	fd[0] - read
+	fd[1] - write
 */
 
 int	main(int argc, char *argv[])
 {
 	int	fd[2];
+	int	id;
 
 	if (pipe(fd) == -1)
 	{
 		printf("An error ocurred with opening the pipe\n");
 		return (1);
+	}
+	id = fork();
+	if (id == 0)
+	{
+		close(fd[0]);
+		int x;
+		printf("Input number: ");
+		scanf("%d", &x);
+		write(fd[1], &x, sizeof(int));
+		close(fd[1]);
+	}
+	else
+	{
+		close(fd[1]);
+		int	y;
+		read(fd[0], &y, sizeof(int));
+		close(fd[0]);
+		printf("The parent got from child process %d\n", y);
 	}
 	return (0);
 }
