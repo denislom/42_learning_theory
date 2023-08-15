@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 00:37:19 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/06 18:02:11 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/15 21:22:25 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ Calling fork two times:
 	|id1 = 0	|
 	|id2 = 0	|
 	|____Y______|
+	id of child is zero
+	while (wait(NULL) != -1 || errno != ECHILD)
+		- going to wait for all the processes
 */
 
 int	main(int argc, char *arv[])
