@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:24:58 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/17 02:22:51 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/17 02:25:28 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,15 @@ int	main(int argc, char *argv[])
 	if (id == 0)
 	{
 		close(fd[0]);
-		write(fd[1], &sum, sizeof(sum));
+		if (write(fd[1], &sum, sizeof(sum)) == -1)
+			return (3);
 		close(fd[1]);
 	}
 	else
 	{
 		close(fd[1]);
-		read(fd[0], &SumFromChild, sizeof(SumFromChild));
+		if (read(fd[0], &SumFromChild, sizeof(SumFromChild)) == -1)
+			return (4);
 		close(fd[0]);
 		totalSum = sum + SumFromChild;
 		printf("Total sum is %d\n", totalSum);
