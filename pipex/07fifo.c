@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 19:40:46 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/17 22:19:43 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/17 22:46:45 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	main(int argc, char *argv[])
 		return (1);
 		}
 	}
-	fd = open("myfifo1", O_WRONLY);
+	// fd = open("myfifo1", O_WRONLY);
+	fd = open("myfifo1", O_RDWR);
 	x = 97;
 	if (write(fd, &x, sizeof(x)) == -1)
 		return (2);
