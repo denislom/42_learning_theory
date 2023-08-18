@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:20:18 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/17 23:47:56 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/18 17:48:08 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int argc, char *argv[])
 		if (read(fd, &arr[i], sizeof(int)) == -1)
 			return (2);
 		printf("Received %d\n", arr[i]);
+		i++;
 	}
 	close(fd);
 }

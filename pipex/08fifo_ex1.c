@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:20:18 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/17 23:51:49 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/18 17:48:05 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ https://www.youtube.com/watch?v=2hba3etpoJg&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3k
 	on the computer. Half of the string will be calculated
 	by 1 process and other half by 2nd
 
-
+	HOW PARENT AND CHILD COMMUNICATE BETWEEN EACH OTHER
 */
 
 int	main(int argc, char *argv[])
@@ -56,6 +56,7 @@ int	main(int argc, char *argv[])
 	while (i < 5)
 	{
 		arr[i] = rand() % 100;
+		i++;
 	}
 	if (fd = open("sum", O_WRONLY) == -1)
 		return (1);
