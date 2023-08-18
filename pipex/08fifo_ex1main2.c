@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:20:18 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/18 17:48:08 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/18 18:10:04 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int argc, char *argv[])
 	int	arr[5];
 	int	fd;
 	int	i;
+	int	sum;
 
 	fd = open("sum", O_RDONLY);
 	if (fd == -1)
@@ -61,5 +62,12 @@ int	main(int argc, char *argv[])
 		printf("Received %d\n", arr[i]);
 		i++;
 	}
+	sum = 0;
 	close(fd);
+	while (i < 10)
+	{
+		sum = sum + arr[i - 5];
+		i++;
+	}
+	printf("Result is %d\n", sum);
 }
