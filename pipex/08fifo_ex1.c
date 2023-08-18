@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:20:18 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/18 17:48:05 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/18 17:59:51 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	while (i < 5)
 	{
-		if (write(fd, &arr[1], sizeof(int)) == -1)
+		if (write(fd, &arr[i], sizeof(int)) == -1)
 			return (2);
 		printf("Wrote %d\n", arr[i]);
 		i++;
