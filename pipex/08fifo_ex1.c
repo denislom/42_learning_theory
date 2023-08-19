@@ -6,11 +6,12 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:20:18 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/18 17:59:51 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/19 17:34:18 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <errno.h>
@@ -55,18 +56,28 @@ int	main(int argc, char *argv[])
 	i = 0;
 	while (i < 5)
 	{
-		arr[i] = rand() % 100;
+		arr[i] = rand() % 10;
+		printf("Generated %d\n", arr[i]);
 		i++;
 	}
-	if (fd = open("sum", O_WRONLY) == -1)
-		return (1);
-	while (i < 5)
+	printf("here1\n");
+	fd = open("sum", O_WRONLY);
+	if (fd == -1)
 	{
-		if (write(fd, &arr[i], sizeof(int)) == -1)
-			return (2);
-		printf("Wrote %d\n", arr[i]);
-		i++;
+		printf("error on opening");
+		return (1);
 	}
+	printf("here2\n");
+	i = 0;
+	while (i < 5)
+	// {
+	// 	if (write(fd, &arr[i], sizeof(int)) == -1)
+	// 		return (2);
+	// 	printf("Wrote %d\n", arr[i]);
+	// 	i++;
+	// }
+	if (write(fd, arr, sizeof(int) * 5) == -1)
+		return (2);
 	close(fd);
 	return (0);
 }

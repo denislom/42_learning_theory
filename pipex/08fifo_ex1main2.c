@@ -6,17 +6,19 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:20:18 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/18 18:10:04 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/19 17:35:38 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#include <time.h>
 /*
 SOURCES:
 [1]
@@ -53,20 +55,29 @@ int	main(int argc, char *argv[])
 
 	fd = open("sum", O_RDONLY);
 	if (fd == -1)
+	{
+		printf("error");
 		return (1);
+	}
+	i = 0;
+	// while (i < 5)
+	// {
+	// 	if (read(fd, &arr[i], sizeof(int)) == -1)
+	// 	{
+	// 		printf("error 2");
+	// 		return (2);
+	// 	}
+	// 	printf("Received %d\n", arr[i]);
+	// 	i++;
+	// }
+	if (read(fd, arr, sizeof(int) * 5) == -1)
+		return (2);
+	close(fd);
+	sum = 0;
 	i = 0;
 	while (i < 5)
 	{
-		if (read(fd, &arr[i], sizeof(int)) == -1)
-			return (2);
-		printf("Received %d\n", arr[i]);
-		i++;
-	}
-	sum = 0;
-	close(fd);
-	while (i < 10)
-	{
-		sum = sum + arr[i - 5];
+		sum = sum + arr[i];
 		i++;
 	}
 	printf("Result is %d\n", sum);
