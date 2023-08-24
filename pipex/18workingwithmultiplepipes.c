@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 13:31:13 by dlom              #+#    #+#             */
-/*   Updated: 2023/08/24 15:40:51 by dlom             ###   ########.fr       */
+/*   Updated: 2023/08/24 15:52:27 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+
+/*
+https://www.youtube.com/watch?v=kCGaRdArSnA&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=25
+*/
 
 int	main(int argc, char *argv[])
 {
